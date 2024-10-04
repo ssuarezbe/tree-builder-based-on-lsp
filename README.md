@@ -84,7 +84,22 @@ A LSP server based on [mason.nvim](https://github.com/williamboman/mason.nvim) s
 
 * https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 
+other LSP servers:
+
+* https://lsp.sublimetext.io/language_servers/
+
 ## VB6 Visual Basic
+
+TwinBasic is an alternative to VB6. 
+https://nolongerset.com/twinbasic-update-september-24-2023/
+
+twinBASIC (along with the Monaco editor) would replace VBA (Maybe)
+
+Here is a LSP PoC for VBA:
+
+* https://github.com/SSlinky/VBA-LanguageServer
+
+For VB6 support check Rubberduck3.
 
 * https://github.com/rubberduck-vba/Rubberduck3 
 * https://github.com/rubberduck-vba/Rubberduck
@@ -105,7 +120,7 @@ https://stackoverflow.com/questions/56108617/how-to-pass-arguments-in-command-li
 
 Check the LSP client to understand how start an LSP server
 
-https://github.com/rubberduck-vba/Rubberduck3/blob/main/Client/Rubberduck.Editor/LanguageClientApp.cs
+https://github.com/rubberduck-vba/Rubberduck3/blob/main/Client/Rubberduck.Editor/LanguageClientApp.cs   
 
 ```bash 
 $ cd Server\Rubberduck.LanguageServer
