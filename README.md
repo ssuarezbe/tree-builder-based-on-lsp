@@ -77,3 +77,37 @@ Install the plugins listed in `init.vim`.
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v4.x'}
     ```
+
+# Language support
+
+A LSP server based on [mason.nvim](https://github.com/williamboman/mason.nvim) support a lot of language. EXCEPT VB6, visual basic, and visual script 
+
+* https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+
+## VB6 Visual Basic
+
+* https://github.com/rubberduck-vba/Rubberduck3 
+* https://github.com/rubberduck-vba/Rubberduck
+
+
+# Interals
+
+This code works by sending a API request to LSP server.
+
+That request is [textDocument/documentSymbol](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentSymbol)
+
+* Build the LSP server. Make sure all the required dependencies are installed: 
+    * https://github.com/rubberduck-vba/Rubberduck3/blob/main/Server/Rubberduck.LanguageServer/Rubberduck.LanguageServer.csproj 
+
+## Run LSP server locally
+
+https://stackoverflow.com/questions/56108617/how-to-pass-arguments-in-command-line-using-dotnet
+
+Check the LSP client to understand how start an LSP server
+
+https://github.com/rubberduck-vba/Rubberduck3/blob/main/Client/Rubberduck.Editor/LanguageClientApp.cs
+
+```bash 
+$ cd Server\Rubberduck.LanguageServer
+$ dotnet run 
+```
