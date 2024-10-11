@@ -48,6 +48,20 @@ code --list-extensions
 
 # Getting started
 
+
+
+```bash
+node i vscode-languageserver
+```
+
+Compile the server:
+
+```bash
+npx tsc -b -w
+```
+
+# Building the server locally 
+
 * Install [nodeenv](https://github.com/ekalinin/nodeenv)
 
   ```bash
@@ -83,12 +97,20 @@ code --list-extensions
 
 * Test that the grammar works locally `npm run antlr4ng`
 
-* Compile the project
+## Compile the project
+
+In VS Code, a [language server](https://code.visualstudio.com/api/language-extensions/language-server-extension-guide) has two parts:
+
+    * Language Client: A normal VS Code extension written in JavaScript / TypeScript. This extension has access to all VS Code Namespace API.
+    * Language Server: A language analysis tool running in a separate process.
+
 
 ```bash
 $ cd VBA-LanguageServer
 $ npm install antlr4
 $ npm i
+$ npm run antlr4ng
+$ npm run compile
 $ # install https://github.com/microsoft/vscode-extension-samples/tree/main/lsp-sample
 $ git clone git@github.com:microsoft/vscode-extension-samples.git 
 $ cd vscode-extension-samples
@@ -105,7 +127,22 @@ $ alias code="/mnt/c/Users/ssuar/AppData/Local/Programs/Microsoft\ VS\ Code/Code
 $ npm test
 ```
 
-* Funny store .... antlr4 supports VB6 
+* Funny story  .... antlr4 supports VB6 
     * https://github.com/antlr/grammars-v4/tree/master/vb6
     * https://github.com/antlr/grammars-v4/tree/master/vba
     * https://github.com/antlr/grammars-v4 
+
+
+# Useful npm tools
+
+* https://www.npmjs.com/package/rimraf
+  * as part of the package.json can be used to remove the out or dist folder `rimraf out && npx tsc`
+  * How To Use TypeScript With Express & Node.   
+* Example of vscode-languageserver
+  * https://github.com/microsoft/vscode-extension-samples/blob/main/lsp-sample/server/src/server.ts
+  * https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
+* Named pipes are little bit faster than sockets
+  * https://supermarket.chef.io/tools/node-js-and-python-integration-powering-versatile-and-scalable-applications
+  * https://stackoverflow.com/questions/1235958/ipc-performance-named-pipe-vs-socket 
+* Using pipes to make Python and Nodejs work using IPC
+  * https://shyamswaroop.hashnode.dev/ipc-between-nodejs-python
