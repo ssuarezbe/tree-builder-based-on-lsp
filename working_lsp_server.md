@@ -60,7 +60,18 @@ https://stackoverflow.com/questions/65265420/how-to-prevent-typescript-from-tran
 
 ## Python
 
-### JSON RPC
+### Webscoket RPC
+
+* Websocket connections explained: https://medium.com/@louis.rosevi/python-web-sockets-5-different-ways-5ffb1a9015f9
+* https://renewal-recsystems.readthedocs.io/en/latest/primer.html#websockets-example
+* https://piehost.com/websocket/python-websocket
+
+
+#### Building the LSP client
+
+* https://tamerlan.dev/an-introduction-to-the-language-server-protocol/
+
+### JSON RPC -- XX NOT WORKING
 
 * https://pypi.org/project/json-rpc/
 
@@ -81,7 +92,7 @@ class RPCServer:
 ```
 
 
-### Python JSON-RPC-Client
+### Python JSON-RPC-Client  -- XX NOT WORKING
 
 * https://www.jsonrpcclient.com/en/3.2.0/api.html
 * https://www.jsonrpcclient.com/en/stable/index.html
