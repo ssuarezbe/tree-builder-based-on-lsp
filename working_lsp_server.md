@@ -117,3 +117,24 @@ Each LSP can offer an capability called `documentSymbolProvider`.
 ```
 textDocument/documentSymbol
 ```
+
+* The nodejs LSP server interface looks like this
+
+```javascript
+/**
+ * Registration options for a {@link DocumentSymbolRequest}.
+ */
+export interface DocumentSymbolRegistrationOptions extends TextDocumentRegistrationOptions, DocumentSymbolOptions {
+}
+/**
+ * A request to list all symbols found in a given text document. The request's
+ * parameter is of type {@link TextDocumentIdentifier} the
+ * response is of type {@link SymbolInformation SymbolInformation[]} or a Thenable
+ * that resolves to such.
+ */
+export declare namespace DocumentSymbolRequest {
+    const method: 'textDocument/documentSymbol';
+    const messageDirection: MessageDirection;
+    const type: ProtocolRequestType<DocumentSymbolParams, DocumentSymbol[] | SymbolInformation[] | null, DocumentSymbol[] | SymbolInformation[], void, DocumentSymbolRegistrationOptions>;
+}
+```
