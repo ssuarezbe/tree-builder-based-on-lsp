@@ -97,3 +97,23 @@ class RPCServer:
 * https://www.jsonrpcclient.com/en/3.2.0/api.html
 * https://www.jsonrpcclient.com/en/stable/index.html
     * `pip install "jsonrpcclient[requests]"` ->  `jsonrpcclient==4.0.3`
+
+# Inspecting LSP server
+
+* https://github.com/Microsoft/language-server-protocol-inspector?tab=readme-ov-file
+
+# Getting the code symbols from LSP server
+
+* How interact with LSP server: https://stackoverflow.com/questions/55312875/guidance-to-writing-lsp-client
+
+Each LSP can offer an capability called `documentSymbolProvider`.
+
+[This capability](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#documentSymbolOptions) is available trough: 
+
+* Request:
+    * `method`: `textDocument/documentSymbol`
+    * `params`: `DocumentSymbolParams` defined as follows:
+
+```
+textDocument/documentSymbol
+```
