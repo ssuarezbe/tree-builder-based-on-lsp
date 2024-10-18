@@ -54,8 +54,8 @@ type_identifier = pp.Word( pp.alphanums + "_", exclude_chars="'").set_name("type
 token_type_cls_word = pp.Group("<"+ pp.Optional(pp.Char("'")) + type_identifier + pp.Optional(pp.Char("'")) + ">")
 token_type_parser = token_type_cls_word.setParseAction(TokenTypeParseAction)
 # == token value parser ==
-code_token = pp.Word(pp.alphanums, '_', exclude_chars="><")
-code_token_value = (code_token | pp.Word("<EOF>") | pp.White(' ',max=60) ).set_name("code_token_value")
+code_token = pp.Word(pp.alphanums + '_', exclude_chars="><")
+code_token_value = (pp.Word("<EOF>") | pp.White(' ',max=60) | code_token  ).set_name("code_token_value")
 token_value_word = pp.Group(
      pp.Word(pp.nums) + pp.Char(":") + pp.Word(pp.nums) 
      + pp.Char("=") + pp.Char("'") + code_token_value + pp.Char("'") 
@@ -127,7 +127,7 @@ if __name__ == "__main__":
         print(f"processing v={v}")
         r = parse_token_type(v)
         print("type=",r[0].value)
-    token_values = ["936:935='<EOF>',<EOF>", "21:22='As',<'AS'>", "6:19='PARMFLAG_CONST',<IDENTIFIER>"]
+    token_values = ["936:935='<EOF>',<EOF>", "6:19='PARMFLAG_CONST',<IDENTIFIER>", "21:22='As',<'AS'>"]
     print("\n*** Test tokens values ***")
     for v in token_values:
         print(f"Processing v={v}")
