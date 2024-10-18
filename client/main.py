@@ -201,10 +201,9 @@ async def client(uri):
 parse source code using 
 https://github.com/antlr/antlr4-tools
 
-antlr4-parse ../VBA-LanguageServer/server/src/antlr/vba.g4 prog -tree /tmp/lsp/vba/sample01.cls
-
-antlr4-parse vba.g4 module EOF input-filename /tmp/lsp/vba/sample01.cls -tree
-antlr4-parse vba.g4 module EOF input-filename /tmp/lsp/vba/sample01.cls -tree -trace
+$ antlr4-parse vba.g4 module EOF input-filename /tmp/lsp/vba/sample01.cls -tokens
+$ antlr4-parse vba.g4 module EOF input-filename /tmp/lsp/vba/sample01.cls -tree
+$ antlr4-parse vba.g4 module EOF input-filename /tmp/lsp/vba/sample01.cls -tree -trace
 """
 
 asyncio.run(client('ws://localhost:3000/vbaLspSampleServer'))  
