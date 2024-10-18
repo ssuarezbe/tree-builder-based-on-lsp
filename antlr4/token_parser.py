@@ -53,8 +53,8 @@ class TokenRowParseAction(object):
         print(f"--> row_tokens = {tokens}")
         self.token_number = tokens[0][2]
         self.token = tokens[0][4]
-        self.s = tokens[0][6]
-        self.e = tokens[0][8]
+        self.file_line = tokens[0][6]
+        self.file_col = tokens[0][8]
         
 
     def generate(self):
