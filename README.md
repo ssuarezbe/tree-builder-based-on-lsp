@@ -1,3 +1,12 @@
+# Understand tree structure for AST
+
+To build a code chunker based on AST , it is important to understand the underneath data structure
+so we can build correct code-chunks.
+
+* https://symflower.com/en/company/blog/2023/parsing-code-with-tree-sitter/
+* https://stackoverflow.com/questions/48524059/how-to-flatten-tree-structure-into-array-of-arrays
+
+
 # tree-builder-based-on-lsp
 
 Dependencies:
