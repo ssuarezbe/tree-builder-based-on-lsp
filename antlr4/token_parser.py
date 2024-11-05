@@ -64,20 +64,25 @@ class TokenRowParseAction(object):
 # https://github.com/pyparsing/pyparsing/wiki/Common-Pitfalls-When-Writing-Parsers
 # Gentle intro to pyparsing
 # https://dev.to/zchtodd/building-parsers-for-fun-and-profit-with-pyparsing-4l9e
+# Read more about quoted string:
+#   https://stackoverflow.com/questions/32148790/using-quotedstring-in-pyparsing
 """
 == token type parser ==
 """
-type_identifier = pp.Word( pp.alphanums + "_", exclude_chars="'").set_name("type_identifier")
-token_type_cls_word = pp.Group("<"+ pp.Optional(pp.Char("'")) + type_identifier + pp.Optional(pp.Char("'")) + ">")
+type_identifier = pp.Word( pp.alphanums + "_"+ '='+")"+"("+",", exclude_chars="'").set_name("type_identifier")
+angleQuoteString = pp.QuotedString('<', endQuoteChar='>')
+token_type_cls_word = pp.Group(pp.delimitedList(angleQuoteString))
 token_type_parser = token_type_cls_word.setParseAction(TokenTypeParseAction)
 """
 == token value parser ==
 """
-code_token = pp.Word(pp.alphanums + '_', exclude_chars="><")
-code_token_value = (pp.Word("<EOF>") | pp.White(' ',max=60) | code_token  ).set_name("code_token_value")
+simpleQuoteString = pp.QuotedString("'")
+code_token_value = pp.Group(pp.delimitedList(simpleQuoteString)).set_name("code_token_value")
+token_str_quotes = ( pp.Char("'") )
 token_value_word = pp.Group(
-     pp.Word(pp.nums) + pp.Char(":") + pp.Word(pp.nums) 
-     + pp.Char("=") + pp.Char("'") + code_token_value + pp.Char("'") 
+     pp.Word(pp.nums) + pp.Char(":") + pp.Word(pp.nums)
+     + pp.Char("=") 
+     + code_token_value 
      + pp.Char(",") + token_type_parser
 )
 token_value_parser = token_value_word.setParseAction(TokenValueParseAction)
@@ -86,7 +91,7 @@ token_value_parser = token_value_word.setParseAction(TokenValueParseAction)
 """
 token_row_word = pp.Group(
     pp.Char("[") + pp.Char("@") + pp.Word(pp.nums) + pp.Char(",")
-    + token_value_parser 
+    + token_value_parser
     + pp.Char(",") + pp.Word(pp.nums) + pp.Char(":") + pp.Word(pp.nums)
     + pp.Char("]")
 )
